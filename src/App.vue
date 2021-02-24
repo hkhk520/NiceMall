@@ -1,32 +1,45 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <transition
+      name="custom-classes-transition"
+      enter-active-class="animate__animated animate__fadeIn"
+    >
+      <router-view />
+    </transition>
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
+};
+</script>
+
 <style lang="less">
+* {
+  margin: 0;
+  padding: 0;
+}
+.auto-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+li {
+  list-style: none;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  color: #333;
+  background-color: #eee;
+
+  // #ff5777
 }
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+:root {
+  --animate-duration: 500ms;
 }
 </style>
