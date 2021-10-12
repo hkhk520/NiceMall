@@ -93,6 +93,11 @@ const routes = [
     name: 'Search',
     component: () => import('../views/Search.vue')
   },
+  {
+    path: '/danyang',
+    name: 'Danyang',
+    component: () => import('../views/DanYang.vue')
+  },
 
   // 路由重定向到Home页面
   {
