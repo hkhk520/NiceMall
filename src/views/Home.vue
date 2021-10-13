@@ -14,7 +14,7 @@
       placeholder="请输入搜索关键词"
       background="#ff5777"
       shape="round"
-      @focus="$router.push({name: 'Search'})"
+      @focus="$router.push({ name: 'Search' })"
     />
 
     <!-- 轮播图 -->
@@ -27,6 +27,11 @@
           </a>
         </van-swipe-item>
       </van-swipe>
+    </div>
+
+    <div class="pro-title-box dan-yang" @click="$router.push({name: 'Danyang'})">
+      <span class="pro-title">丹阳专栏</span>
+      <img src="../assets/images/star.png" class="icon">
     </div>
 
     <!-- 宫格盒子 -->
@@ -48,7 +53,6 @@
         <van-image :src="item.image" width="50" height="50" :round="true" />
         <div class="recommend-title">{{ item.title }}</div>
       </van-grid-item>
-      
     </van-grid>
 
     <!-- 灰色间隔 -->
@@ -176,7 +180,7 @@ export default {
     goRemmLists(currentRemm) {
       // 路由跳转
       this.$router.push({ name: "RemmLists", query: { currentRemm } });
-      localStorage.setItem("currentRemm",JSON.stringify(currentRemm));
+      localStorage.setItem("currentRemm", JSON.stringify(currentRemm));
     },
 
     // 初始化加载前4条数据
@@ -195,7 +199,7 @@ export default {
         method: "get",
         url: this.beauty + "/home/data",
         params: {
-          type: 'pop',
+          type: "pop",
           page: 1,
         },
       })
@@ -216,7 +220,7 @@ export default {
     // 下拉加载更多，并拼接到数据后面
     concatData(list) {
       this.listDatas = list;
-      if(this.listDatas && this.showListDatas){
+      if (this.listDatas && this.showListDatas) {
         this.showListDatas = this.showListDatas.concat(
           this.listDatas.slice(this.page * 4, (this.page + 1) * 4)
         );
@@ -264,28 +268,44 @@ export default {
     text-overflow: ellipsis;
     text-align: center;
   }
+
+  /deep/ .van-grid {
+    padding-top: 16px;
+    background-color: #fff;
+  }
   /deep/ .van-grid-item__content {
     padding-top: 0;
   }
 
+  .pro-title-box {
+    padding: 10px 0;
+    background-color: #fff;
+  }
+  .dan-yang{
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .icon{
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+    }
+  }
+
+  .pro-title {
+    display: inline-block;
+    background-color: #ff5777;
+    color: #fff;
+    font-size: 13px;
+    padding: 0 14px;
+    height: 32px;
+    line-height: 32px;
+    border-top-right-radius: 16px;
+  }
+
   .product-box {
     margin-top: 10px;
-
-    .pro-title-box {
-      padding: 10px 0;
-      background-color: #fff;
-    }
-
-    .pro-title {
-      display: inline-block;
-      background-color: #ff5777;
-      color: #fff;
-      font-size: 13px;
-      padding: 0 14px;
-      height: 32px;
-      line-height: 32px;
-      border-top-right-radius: 16px;
-    }
 
     .products {
       display: flex;
